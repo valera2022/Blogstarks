@@ -1,5 +1,6 @@
-import router from ("express").Router()
+import Router from "express"
 
+const router = Router()
 
 router.get("/blogs",(req,res)=>{
 })
