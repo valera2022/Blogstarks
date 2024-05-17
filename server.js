@@ -1,19 +1,14 @@
-const express = require("express")
+ import  express from  "express"
+// const express = require("express")
+import cors  from "cors"
+
 const app = express()
 
-const computers = {
-    computers:[
-    "mac","lenovo","hp","dell","msi"
-]}
-
-app.get("/computers", (req,res)=>{
-
-    res.json(computers)
-    res.end()
 
 
-
-})
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 
 app.listen( 4000)
