@@ -1,4 +1,6 @@
 import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
+// import { hash } from "crypto"
 
 export const createToken= (user)=>{
     const token = jwt.sign({
@@ -13,6 +15,12 @@ export const createToken= (user)=>{
 
 export const verifyToken= (req,res,next)=>{
     const token = req.cookies.token
+
+    if(!token){
+        res.status(401)
+        res.json({message: "not authorized"})
+
+    }
 
     try {
         const user = jwt.verify(token,
@@ -29,4 +37,16 @@ export const verifyToken= (req,res,next)=>{
         return
     }
 
+ 
+
+}
+
+export const hashPassword = (password)=>{
+    return bcrypt.hash(password, 5)
+        
+
+}
+
+export const comparePassword = (password,hash)=>{
+          return bcrypt.compare(password,hash)
 }
