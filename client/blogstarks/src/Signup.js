@@ -24,7 +24,7 @@ export default function Signup() {
         body: JSON.stringify(formData
         )})
       .then(r=> r.json())
-      .then(dat=> console.log(dat))
+      .then(dat=> document.cookie = `token=${dat.token}`)
   }
   
     

@@ -9,7 +9,7 @@ const prisma = new PrismaClient()
 
 
 export const signUp =  async (req,res)=>{
-    res.json({message:"signuo"})
+
 //    let pssObject =  hashPassword(req.body.password)
 //    let pss = `${pssObject}`
     const user = await prisma.user.create({
@@ -23,17 +23,15 @@ export const signUp =  async (req,res)=>{
 
     const token = createToken(user)
     console.log(token)
-    res.cookie = ("token",token,{
-        httpOnly: true,
-        sameSite: "None",
-        secure: "false"
-    })
-    // res
-    // .writeHead(200, {
-    //   "Set-Cookie": "token=encryptedstring; HttpOnly",
-    //   "Access-Control-Allow-Credentials": "true"
+    res.json({token})
+    // res.cookie = ("token",token,{
+    //     maxAge: 900000,
+    //     httpOnly: true,
+    //     sameSite: "None",
+    //     secure: "false"
     // })
-    // .send();
+  
+ 
    
 
 }
@@ -52,7 +50,6 @@ export const logIn = async(req,res)=>{
         res.json({message: "not aauth"})
         return
     }
-
 
     const token = createToken(user)
     res.cookie =  {token}
