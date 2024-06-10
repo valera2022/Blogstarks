@@ -27,7 +27,8 @@ export const createBlog= async(req,res)=>{
             title: req.body.title,
             img: req.body.img,
             content: req.body.content,
-            belongToId: req.user.id
+            author: req.user.id,
+          
 
         }
 

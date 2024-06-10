@@ -23,7 +23,8 @@ export const signUp =  async (req,res)=>{
 
     const token = createToken(user)
     console.log(token)
-    res.json({token})
+    const { password, ...sanitizedUser } = user;
+    res.json({token, sanitizedUser})
     // res.cookie = ("token",token,{
     //     maxAge: 900000,
     //     httpOnly: true,
@@ -45,15 +46,16 @@ export const logIn = async(req,res)=>{
 
     const validUser = await comparePassword(req.body.password, user.password)
 
-    if(!valid){
+    if(!validUser){
         res.status(401)
-        res.json({message: "not aauth"})
+        res.json({message: "Wrong credentials"})
         return
     }
 
     const token = createToken(user)
-    res.cookie =  {token}
-    res.end()
+    const { password, ...sanitizedUser } = user;
+    res.json({token, sanitizedUser}) 
+  
 
 
 

@@ -1,0 +1,32 @@
+.createBlog-container{
+    
+    container: flex;
+    flex-direction: column;
+    border: solid ;
+    border-color: red;
+    width: 500px;
+    height: 200px;
+    flex-direction: center;
+    align-items: center;
+    padding-top: 40px;
+    margin-left: 30%;
+    margin-top: 10%;
+
+    
+}
+
+.input-field{
+    flex: auto ;
+    border: solid   ;
+    border-radius: 3px;
+    border-color: cadetblue;
+    border-width: 1px;
+    height: 25px;
+    margin-right: 90px;
+ 
+}
+.sub-button{
+border-color: blue;
+margin-top: 20px;
+border-radius: 10px;
+}

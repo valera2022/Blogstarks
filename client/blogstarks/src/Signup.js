@@ -1,6 +1,7 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
+import { AppContext } from './context/context'
 
 
 export default function Signup() {
@@ -8,6 +9,7 @@ export default function Signup() {
     const[picture, setPicture] = useState("picture")
     const[password, setPassword] = useState("password")
     const [data,setData] = useState("data")
+    const {signup} = useContext(AppContext)
 
     function handleSubmit(e){
       e.preventDefault()
@@ -24,7 +26,24 @@ export default function Signup() {
         body: JSON.stringify(formData
         )})
       .then(r=> r.json())
-      .then(dat=> document.cookie = `token=${dat.token}`)
+      .then(dat=> {
+        console.log(dat)
+        if(!dat.errors){
+          console.log(dat)
+
+          document.cookie = `token=${dat.token}`
+          signup(dat.sanitizedUser)
+         
+
+        }
+        else{ 
+          console.log(dat)
+         return (
+         <div>
+            {dat.errors.map((error)=>{return <li>{error.msg}</li>})}
+         </div>) 
+        }
+       })
   }
   
     
