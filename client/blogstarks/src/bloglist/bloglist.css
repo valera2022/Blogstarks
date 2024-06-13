@@ -1,0 +1,13 @@
+img {
+    width: 40%;
+    height: auto;
+    border-radius: 3%;
+}
+p{
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 71px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

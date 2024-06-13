@@ -38,6 +38,24 @@ function AppProvider({children}){
 
     }
 
+    useEffect(()=>{
+        fetch("/api/me") 
+        .then (response => response.json())
+        .then( data=> {
+            if (!data.errors) 
+            { setUser(data);
+              callBlogs()
+            
+            }
+            else{
+                
+                console.log(data)
+            }
+        }
+        )
+        
+    },[])
+
     
 
 
@@ -67,7 +85,7 @@ function callBlogs(){
 
     
 return (
-    <AppContext.Provider value={{setLoggedIn,loggedin,signup,setBlogs, blogs}}>
+    <AppContext.Provider value={{setLoggedIn,loggedin,signup,setBlogs, blogs,login}}>
              {children}
     
     </AppContext.Provider>)

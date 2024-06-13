@@ -4,8 +4,11 @@ import { validationErrors } from "../prisma/utils/validationErrors.js"
 import { rmSync } from "fs"
 import { createBlog, deleteBlog, getBlogs, updateBlog } from "../controllers/blog.js"
 import { postBlogValidation } from "../prisma/utils/validations.js"
+import {getMe} from "../controllers/user.js"
 
 const router = Router()
+
+router.get("/me", getMe, (req,res)=>{})
 
 router.get("/blogs", getBlogs,(req,res)=>{})
 

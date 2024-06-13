@@ -2,6 +2,7 @@
 import React, { useContext } from 'react'
 import { useState } from 'react'
 import { AppContext } from './context/context'
+import { Link } from 'react-router-dom'
 
 
 export default function Signup() {
@@ -58,6 +59,7 @@ export default function Signup() {
       <input onChange={(e)=> setPassword(e.target.value)} value={password}/>
       <input type="submit" value="Submit"  />
      </form>
+     <Link to="/blogs">Blogs</Link>
     </div>
   )
 }

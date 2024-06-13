@@ -4,7 +4,15 @@ const prisma = new PrismaClient()
 //get all blogs
 export const getBlogs= async (req,res)=>{
     //find all blogs
-    const blogs = await prisma.blog.findMany()
+    const blogs = await prisma.blog.findMany({
+        select: {
+          title: true,
+          content: true,
+          img: true,
+          id: true,
+          userId: true
+        },
+      })
     //send blogs
     res.json({blogs})
 }
@@ -23,14 +31,33 @@ export const getUserBlogs= async (req,res) =>{
 
 export const createBlog= async(req,res)=>{
     const blog = await prisma.blog.create({
-        data:{
+        data: {
             title: req.body.title,
             img: req.body.img,
             content: req.body.content,
-            author: req.user.id,
+            author: {
+                connect: { id: req.user.id }
+            },
+          }
+        //   ,
+        //   include: {
+        //     author: {
+        //         select: {
+        //         username: true,
+        //         picture: true,
+        //       },},
+        //   },
+        
+        // data:{
+            // title: req.body.title,
+            // img: req.body.img,
+            // content: req.body.content,
           
+           
 
-        }
+        // }
+        // author:{ belongToId: req.user.id},
+    
 
         
     })

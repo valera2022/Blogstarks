@@ -11,3 +11,9 @@ export const signupValidation = [
     body("password").isLength({min: 6}).exists({checkFalsy: true}),
     body("username").exists({checkFalsy: true})
 ]
+
+export const LoginValidation = [
+    body("password").isLength({min: 6}).exists({checkFalsy: true}),
+    body("username").exists({checkFalsy: true})
+    
+]

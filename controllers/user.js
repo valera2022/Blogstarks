@@ -60,3 +60,21 @@ export const logIn = async(req,res)=>{
 
 
 }
+
+export const getMe = async(req,res)=>{
+    const user = await prisma.user.findUnique({
+        where: {
+            id: req.user.id ,
+          },
+          select: {
+            id: true,
+            username: true,
+            picture: true
+         
+          }
+       
+      })
+
+      res.json({user})
+
+}
