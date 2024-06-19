@@ -9,6 +9,7 @@ function Bloglist(){
     const {blogs,loggedin} = useContext(AppContext)
  
     console.log(blogs)
+    console.log(loggedin)
   
 // r
 //    if(loggedin ){
@@ -35,18 +36,27 @@ function Bloglist(){
 let arr 
 
 if(loggedin){
-     arr =  blogs.blogs.map((blog)=>{
-    console.log(blog)
-    return (<div>
-     
-        <BlogPreview blog ={blog}/>
-    </div>)
-
-   
- })}
+    if (blogs.length > 0){
+      arr =  blogs.blogs?.map((blog)=>{
+        console.log(blog)
+        
+        return (<div>
+         
+            <BlogPreview blog ={blog}/>
+        </div>)
+    
+       
+     })
+      
+    }
+  }
 
  else{
-   return <Link to= "login"> Please Log In</Link> 
+   return( <div>
+        <Link to= "login"> Please Log In</Link> 
+         <p>Don't have an Account ? <Link to="/signup"> Sign Up </Link> </p>
+        
+   </div>)
  }
 
 if(loggedin){

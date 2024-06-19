@@ -10,11 +10,14 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "Blog" (
+    "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
     "img" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "userId" INTEGER NOT NULL
+    "userId" INTEGER NOT NULL,
+
+    CONSTRAINT "Blog_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

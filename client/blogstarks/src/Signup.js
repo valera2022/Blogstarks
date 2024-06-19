@@ -3,12 +3,13 @@ import React, { useContext } from 'react'
 import { useState } from 'react'
 import { AppContext } from './context/context'
 import { Link } from 'react-router-dom'
+import "./signup.css"
 
 
 export default function Signup() {
-    const[username, setUsername] = useState("username")
-    const[picture, setPicture] = useState("picture")
-    const[password, setPassword] = useState("password")
+    const[username, setUsername] = useState("")
+    const[picture, setPicture] = useState("")
+    const[password, setPassword] = useState("")
     const [data,setData] = useState("data")
     const {signup} = useContext(AppContext)
 
@@ -49,17 +50,18 @@ export default function Signup() {
   
     
   return (
-    <div>
+    <div className='signup-container'>
     <form onSubmit={handleSubmit}>
-      <label>Username</label>
-      <input onChange={(e)=>setUsername(e.target.value)} value={username}/>
-      <label>Pic</label>
-      <input onChange={(e)=> setPicture(e.target.value)} value={picture}/>
-      <label>password</label>
-      <input onChange={(e)=> setPassword(e.target.value)} value={password}/>
-      <input type="submit" value="Submit"  />
+      
+      <input  className="input-field" onChange={(e)=>setUsername(e.target.value)} placeholder='username' value={username}/>
+   
+      <input  className="input-field" onChange={(e)=> setPicture(e.target.value)} placeholder="pic" value={picture}/>
+     
+      <input  className="input-field" onChange={(e)=> setPassword(e.target.value)} placeholder='password' value={password}/>
+      <br/>
+      <input  className="submit-btt"type="submit" value="Submit"  />
      </form>
-     <Link to="/blogs">Blogs</Link>
+     {/* <Link to="/blogs">Blogs</Link> */}
     </div>
   )
 }

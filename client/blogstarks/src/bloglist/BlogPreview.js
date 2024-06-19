@@ -6,7 +6,7 @@ export default function BlogPreview({blog}) {
     let im = blog.img
   return (
  <div> 
-    <img   alt='picture' src={im} />
+    <img  alt='picture' src={im} />
     <Link to={`/blogs/${blog.id}`}>   <h1>{blog.title}</h1></Link>
  
     <p>{blog.content}</p>

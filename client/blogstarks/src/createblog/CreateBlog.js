@@ -3,12 +3,15 @@ import React, { useContext } from 'react'
 import { useState } from 'react'
 import { AppContext } from '../context/context'
 import "./createblog.css"
+import { useNavigate } from 'react-router-dom'
 
  function CreateBlog() {
     const [title,setTitle] = useState("")
     const [content,setContent] = useState("")
     const [img,setImg] = useState("")
     const {setBlogs, blogs} = useContext(AppContext)
+
+    const navigate = useNavigate()
 
     function handleSubmit(e){
         e.preventDefault()
@@ -30,6 +33,8 @@ import "./createblog.css"
             if(!data.errors){
                 setBlogs([...blogs, data])
                 console.log(data)
+                console.log(blogs)
+                navigate("/")
 
             }
             else{

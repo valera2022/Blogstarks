@@ -45,7 +45,7 @@ function AppProvider({children}){
             if (!data.errors) 
             { setUser(data);
               callBlogs()
-            
+              setLoggedIn(true)
             }
             else{
                 

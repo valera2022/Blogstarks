@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import { AppContext } from '../context/context'
 import { useNavigate } from 'react-router-dom'
-
+import "./login.css"
 export default function () {
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
-    const {login,setLoggedIn} = useContext(AppContext)
+    const {login,setLoggedIn,loggedin} = useContext(AppContext)
     const navigate = useNavigate()
 
     function handleSubmit(e){
@@ -39,8 +39,8 @@ export default function () {
         navigate("/")
 
     }
-    
-  return (
+    if(!loggedin){
+   return (
     <div className='login-container'>
         <form onSubmit={handleSubmit}>
             <input className='input-field' placeholder='Username' value={username} onChange={(e)=> setUsername(e.target.value)}/>
@@ -49,4 +49,8 @@ export default function () {
         </form>
     </div>
   )
+ }
+ else{
+    return <h1>You already Logged in</h1>
+ }
 }
